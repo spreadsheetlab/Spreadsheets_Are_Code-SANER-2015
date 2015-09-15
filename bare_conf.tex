@@ -1,0 +1,160 @@
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+\newcommand{\todo}[1]{\textbf{TODO: #1}}
+
+\documentclass[conference]{IEEEtran}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+\title{Spreadsheets are Code}
+
+\author{\IEEEauthorblockN{Felienne Hermans, Bas Jansen, Sohon Roy, Efthimia Aivaloglou, David Hoepelman and Alaaeddin Swidan}
+\IEEEauthorblockA{f.f.j.hermans, \todo{emailadresses}}
+\IEEEauthorblockA{Delft University of Technology, the Netherlands}
+}
+
+
+\maketitle
+
+\begin{abstract}
+The abstract goes here.
+\end{abstract}
+
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+Spreadsheets are used in all sorts of domains for a variety of tasks. \todo{they are super important} 
+
+•	Financial intelligence firm CODA reports that 95\% of all U.S. Firms use spreadsheets for financial reporting. [1]
+•	In 2004, RevenueRecognition.com (now Softtrax) had the International Data Corporation interview 118 business leaders. IDC found that 85\% were using spreadsheets in financial reporting and forecasting. [1]
+•	The number of end- user programmers in the USA alone is conservatively estimated at 11 million, compared to only 2.75 million other, professional programmers. [2]
+
+%[1] Sarbanes-Oxley: What About all the Spreadsheets?, Raymond R. Panko and Nicholas Ordway, 2008
+%[2] Estimating the numbers of end users and end user programmers, Christopher Scafﬁdi, Mary Shaw, and Brad Myers, 2005
+
+
+This paper highlights past achievements, challenges and future research directions in the area of spreadsheets. 
+
+
+\section{Background \& Motivation}
+Simply put, spreadsheets are the world's most successful programming platform in the history of computing. Every day spreadsheets enable millions of business users to do reporting, planning, scheduling and all else needed to succeed in their jobs. 
+
+Of course, there are plenty of spreadsheets that simply used to keep lists or for throw away calculations, but just as many are used for business critical calculations.
+
+Since spreadsheets are source code, they suffer from typical software programs: they can have a long lifespan during which they are used and maintained by multiple users, they often do not have documentation and they are often riddled with errors. These problems are not unfamiliar to the software engineering community, in fact these are problems commonly addressed in our research. 
+
+The core approach of our research over the past 7 years has been to 
+
+
+\section{Achievements} 
+
+\subsection{Lack of documentation} 
+
+To address lack of documentation, we tried reverse engineering:
+\subsubsection{Class diagrams}
+\subsubsection{Dataflow visualization}
+
+\subsection{Understanding Complextiy} 
+To address complextiy:
+
+\subsubsection{Metrics}
+\subsubsection{Smell detection}
+\subsubsection{Clone detection}
+
+\subsection{Improving/re-engineering}
+\subsubsection{Refactoring}
+\subsubsection{Testing}
+
+
+This all has to do with understanding and improving quality we still want to support understanding domain/calculation.Our work and that of others was all 100\% automated, what we have learned, if we want to continue with reverse engineering, we need more support from the user, both the creator and human level intelligence (a generic user): we both want to do large studies with generic users like the labeling game and make support for users to add more (domain) knowledge to the sheets.
+
+\section{Challenges} 
+
+\subsection{End-users self perception}
+One of the core challenges of researching spreadsheets, and also end-user programming in general is that users do not seen themselves as programmers. Therefore, they often do not have training, but this is not the core issue. We could provide them with training, but preferably we support them with easier and less error-prone methods with more expressive power to do their jobs.
+The perception of end-user programmers as not being programmers is not limited to how programmers view themselves, but also to how they are seen by others. Professional developers and other coworkers of them often fail to recognize nad often belittle their programming efforts.
+
+\subsection{Lack of best practices}
+A challenge that follows the previous one is the lack of standards. This inhibits easy processing of spreadsheets as it results in many differnt types of spreadsheets.
+
+\subsection{Lack of data}
+Spreadsheets often contain models and calculations of vital information to companies. As such, companies are often reluctant to share them with researchers. \todo{this is a broader issue in very applied/industrial research, tradeoff realism vs. reproducability} Even when we get large sets (like Enron), we do not have the users with them. There is no process data (version control history, like “MSR type papers”).
+
+\subsection{Size of spreadsheets }
+Spreadsheets can get big, navigating on 1 worksheet is still ok, but for larger sheets it is hard to filter what to present, just showing all dependencies is too much. [example from Enron, Sohon might have a pic]
+
+For useful visualizatin, we have to leave the cell level, want to look at the computation level (slicing)
+
+\todo{not sure what was meant here:}Getting domain knowledge out at a higher level, maybe with some assistance from the user, letting them know which cells have labels and which lack them.
+
+\subsection{Performance}
+Connection with size, \todo{Alaaeddin}
+
+\subsection{Technical issues}
+Finally, there are technical issues in processing spreadsheets and developing add-ins for a proprietary product like Microsoft Excel. 
+Lack of open standards, and even when open, not very standardized (we have to reverse engineer stuff, link SCAM, also HPC/HEAT is not open, not willing to share)
+Limited options for customization (undo/redo stack is not available, in the object model precedents do not go deeper than 1 level, objects model gets extended but not updated)
+
+Obviously, one could steer away from these issues by implementing a system themselves (Forms/3 and Sestoft) or to build plugins for open source tools. Here however the tradeoff with realism is apparent too, building tools for Excel which is the number 1 spreadsheet solution increase the realism and impact of research tools.
+
+\section{Future opportunities}
+Given the above achievements  and challenges, we identify the following viable directions for future work.
+
+\subsection{Continuation of the refactoring and testing work}
+In contrast to the work on smells that have been tried in practice and spurred numerous follow up works and has been picked up by a larger research community, refactorings and testing need to be made more applicable.
+
+\subsection{More deeply understanding the role of spreadsheets in the enterprise}
+This understanding will have to happen both culturally (evolution, process) and in their application (use of spreadsheets) For example, classification different types of spreadsheets, potentially. For this we are exploring the following concrete endeavours:
+
+\subsubsection{For the purpose of reverse engineering (Sohon)}
+Potential application of extraction high level structure would be:
+\paragraph{documentation extraction}
+\paragraph{validating spreadsheets at a higher level}
+
+\subsubsection{To support users in creating better spreadsheets}
+Using  an alternative interface for some types of spreadsheets, bringing a higher level of abstraction (Bas)
+
+\subsection{Beyond formulas}
+
+  Self-service BI. This field is now mainly concerned with building but not with maintenance. We see them making the same mistake by not focusing on end-user maintenace, maybe underestimating the longevity of the new artefacts created. We suspect that this new incarnation of end-user programming again will suffer from smells etc. So our research will explore this, for example by focusing. Other spreadsheet concepts like PivotTables and VBA code
+  
+
+Increasing performance of spreadsheets (Allaeddin)
+Intertwining of formulas and other conctructs makes automated analysis even harder
+
+
+\section{Related Work}
+
+\section{Conclusion}
+
+
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+\bibliography{IEEEabrv,references}
+
+
+% that's all folks
+\end{document}
+
+
