@@ -30,14 +30,9 @@ The abstract goes here.
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-Spreadsheets are used in all sorts of domains for a variety of tasks. \todo{they are super important} 
+Spreadsheets are used for a large variety of different tasks, from invoicing to planning and from budgeting to scheduling, in all sorts of domains, from one man shops \todo{is that a word?} to multinationals. In 2004, RevenueRecognition.com (now Softtrax) had the International Data Corporation interview 118 business leaders. IDC found that 85\% were using spreadsheets in financial reporting and forecasting~\cite{Panko2008}
 
-•	Financial intelligence firm CODA reports that 95\% of all U.S. Firms use spreadsheets for financial reporting. [1]
-•	In 2004, RevenueRecognition.com (now Softtrax) had the International Data Corporation interview 118 business leaders. IDC found that 85\% were using spreadsheets in financial reporting and forecasting. [1]
-•	The number of end- user programmers in the USA alone is conservatively estimated at 11 million, compared to only 2.75 million other, professional programmers. [2]
-
-%[1] Sarbanes-Oxley: What About all the Spreadsheets?, Raymond R. Panko and Nicholas Ordway, 2008
-%[2] Estimating the numbers of end users and end user programmers, Christopher Scafﬁdi, Mary Shaw, and Brad Myers, 2005
+Especially in the financial domain, spreadsheets are extensively \todo{nog sterker woord?} used. Financial intelligence firm CODA reported in 2008 that 95\% of all U.S. companies use spreadsheets for financial reporting~\cite{Panko2008}. The number of end- user programmers in the USA alone is conservatively estimated at 11 million, compared to only 2.75 million other, professional programmers~\cite{Scaf2005}.
 
 
 This paper highlights past achievements, challenges and future research directions in the area of spreadsheets. 
@@ -50,29 +45,36 @@ Of course, there are plenty of spreadsheets that simply used to keep lists or fo
 
 Since spreadsheets are source code, they suffer from typical software programs: they can have a long lifespan during which they are used and maintained by multiple users, they often do not have documentation and they are often riddled with errors. These problems are not unfamiliar to the software engineering community, in fact these are problems commonly addressed in our research. 
 
-The core approach of our research over the past 7 years has been to 
 
 
 \section{Achievements} 
+The core approach of our research over the past 7 years has been to apply methods from software engineering to spreadsheets, addressing problems also commonly found in software in similar ways, but tailored towards the specific challenges of end-users and their artifacts.
 
-\subsection{Lack of documentation} 
 
-To address lack of documentation, we tried reverse engineering:
+\subsection{Documentation extraction} 
+Like software, spreadsheets often suffer from a lack of documentation. In a field study, we found that only one in three spreadsheets have documentation~\cite{Hermans2011}. This seems to be a problem especially in situation where a spreadsheet was transferred: between colleagues, from a spreadsheet user to IT for migration or when a spreadsheet had to be reviewed by an auditor. To address the lack of documentation, we developed approaches to reverse engineers spreadsheets.
+
 \subsubsection{Class diagrams}
+\todo{Sohon?}
+
 \subsubsection{Dataflow visualization}
+\todo{Sohon?}
 
-\subsection{Understanding Complextiy} 
-To address complextiy:
+\subsection{Understanding Complexity} 
+After focusing on extraction of documentation, we found out that spreadsheet users often prefer to work in spreadsheets over migrating them, hence we shifted our focus to helping users understand the complexity of spreadsheets and determine ways to improve them. For this, we took the idea of \emph{code smells} as inspiration, adapting it however, to be applicable to spreadsheets.
 
-\subsubsection{Metrics}
-\subsubsection{Smell detection}
+\subsubsection{Formula-level Smell detection}
+We started by defining smells on the formula level where we found that many smell defined for code also applied nicely to spreadsheets. For example, conditional complexity can be applied as is, since spreadsheets support conditionals too. Some other smells needed some modification: many parameters became many references and long method became many operations. After defining the 
+
+\subsubsection{Structural Smell detection}
+
 \subsubsection{Clone detection}
 
 \subsection{Improving/re-engineering}
 \subsubsection{Refactoring}
 \subsubsection{Testing}
 
-
+\subsection{Conclusion}
 This all has to do with understanding and improving quality we still want to support understanding domain/calculation.Our work and that of others was all 100\% automated, what we have learned, if we want to continue with reverse engineering, we need more support from the user, both the creator and human level intelligence (a generic user): we both want to do large studies with generic users like the labeling game and make support for users to add more (domain) knowledge to the sheets.
 
 \section{Challenges} 
@@ -123,11 +125,11 @@ Using  an alternative interface for some types of spreadsheets, bringing a highe
 
 \subsection{Beyond formulas}
 
-  Self-service BI. This field is now mainly concerned with building but not with maintenance. We see them making the same mistake by not focusing on end-user maintenace, maybe underestimating the longevity of the new artefacts created. We suspect that this new incarnation of end-user programming again will suffer from smells etc. So our research will explore this, for example by focusing. Other spreadsheet concepts like PivotTables and VBA code
+  Self-service BI. This field is now mainly concerned with building but not with maintenance. We see them making the same mistake by not focusing on end-user maintenance, maybe underestimating the longevity of the new artifacts created. We suspect that this new incarnation of end-user programming again will suffer from smells etc. So our research will explore this, for example by focusing. Other spreadsheet concepts like PivotTables and VBA code
   
 
 Increasing performance of spreadsheets (Allaeddin)
-Intertwining of formulas and other conctructs makes automated analysis even harder
+Intertwining of formulas and other constructs makes automated analysis even harder
 
 
 \section{Related Work}
@@ -151,7 +153,7 @@ Intertwining of formulas and other conctructs makes automated analysis even hard
 
 \bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-\bibliography{IEEEabrv,references}
+\bibliography{references}
 
 
 % that's all folks
