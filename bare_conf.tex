@@ -30,12 +30,13 @@ The abstract goes here.
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-Spreadsheets are used for a large variety of different tasks, from invoicing to planning and from budgeting to scheduling, in all sorts of domains, from one man shops \todo{is that a word?} to multinationals. In 2004, RevenueRecognition.com (now Softtrax) had the International Data Corporation interview 118 business leaders. IDC found that 85\% were using spreadsheets in financial reporting and forecasting~\cite{Panko2008}
+Spreadsheets are used for a large variety of different tasks, from invoicing to planning and from budgeting to scheduling, in all sorts of domains, from small shops to multinationals. In 2004, the International Data Corporation interview 118 business leaders and found that 85\% were using spreadsheets in financial reporting and forecasting~\cite{Panko2008} Especially in the financial domain, spreadsheets are ubiquitous. Financial intelligence firm CODA reported in 2008 that 95\% of all U.S. companies use spreadsheets for financial reporting~\cite{Panko2008}. The number of end-user programmers in the USA alone is conservatively estimated at 11 million, compared to only 2.75 million other, professional programmers~\cite{Scaf2005}. 
 
-Especially in the financial domain, spreadsheets are extensively \todo{nog sterker woord?} used. Financial intelligence firm CODA reported in 2008 that 95\% of all U.S. companies use spreadsheets for financial reporting~\cite{Panko2008}. The number of end- user programmers in the USA alone is conservatively estimated at 11 million, compared to only 2.75 million other, professional programmers~\cite{Scaf2005}.
+As artifacts of end-user programming, spreadsheets often play a role similar to source code in many companies: they support important organizational processes and sometimes even business decisions are taken based on the information they contain~\cite{Hermans2011}.
 
+While spreadsheets are commonly used, their users often have little training as programmers, but in spite of that, they often face many of the challenges of professional developers, choosing which APIs, libraries, and functions to use~\cite{Ko2004}, or understanding someone else's code~\cite{Ko2011}. Since spreadsheets frequently contain errors~\cite{Panko1998}, end-users test, verify and debug their programs~\cite{Hermans2013-Cascon,Ko2004-Why}.
 
-This paper highlights past achievements, challenges and future research directions in the area of spreadsheets. 
+The above issues occurring in spreadsheets: program construction, maintenance, testing, debugging clearly occur in regular code bases too, and as such have been topics of research in the programming and software engineering community for decades.\todo{references here}. Given these similarities between spreadsheets and source code, both in terms of application and issues, it is feasible to transform methods, tools and techniques from software engineering to spreadsheets, albeit sometimes in a form more tailored towards end-users. This has exactly been the approach of a number of researchers over the last decade, and this paper highlights their past achievements, challenges and future research directions. 
 
 
 \section{Background \& Motivation}
@@ -48,8 +49,10 @@ Since spreadsheets are source code, they suffer from typical software programs: 
 
 
 \section{Achievements} 
-The core approach of our research over the past 7 years has been to apply methods from software engineering to spreadsheets, addressing problems also commonly found in software in similar ways, but tailored towards the specific challenges of end-users and their artifacts.
+The core approach of the \emph{end-user software engineering} research applied to spreadsheets over the past decade has been to apply methods from software engineering to spreadsheets, addressing problems also commonly found in software in similar ways, but tailored towards the specific challenges of end-users and their artifacts.
 
+\subsection{Testing}
+\todo{summarize WYSIWYT}
 
 \subsection{Documentation extraction} 
 Like software, spreadsheets often suffer from a lack of documentation. In a field study, we found that only one in three spreadsheets have documentation~\cite{Hermans2011}. This seems to be a problem especially in situation where a spreadsheet was transferred: between colleagues, from a spreadsheet user to IT for migration or when a spreadsheet had to be reviewed by an auditor. To address the lack of documentation, we developed approaches to reverse engineers spreadsheets.
@@ -60,7 +63,7 @@ Like software, spreadsheets often suffer from a lack of documentation. In a fiel
 \subsubsection{Dataflow visualization}
 \todo{Sohon?}
 
-\subsection{Understanding Complexity} 
+\subsection{Smell Detection} 
 After focusing on extraction of documentation, we found out that spreadsheet users often prefer to work in spreadsheets over migrating them, hence we shifted our focus to helping users understand the complexity of spreadsheets and determine ways to improve them. For this, we took the idea of \emph{code smells} as inspiration, adapting it however, to be applicable to spreadsheets.
 
 \subsubsection{Formula-level Smell detection}
@@ -68,11 +71,10 @@ We started by defining smells on the formula level where we found that many smel
 
 \subsubsection{Structural Smell detection}
 
-\subsubsection{Clone detection}
+\subsection{Clone detection}
 
-\subsection{Improving/re-engineering}
-\subsubsection{Refactoring}
-\subsubsection{Testing}
+\subsection{Improving/re-engineering/Refactoring}
+
 
 \subsection{Conclusion}
 This all has to do with understanding and improving quality we still want to support understanding domain/calculation.Our work and that of others was all 100\% automated, what we have learned, if we want to continue with reverse engineering, we need more support from the user, both the creator and human level intelligence (a generic user): we both want to do large studies with generic users like the labeling game and make support for users to add more (domain) knowledge to the sheets.
@@ -81,7 +83,7 @@ This all has to do with understanding and improving quality we still want to sup
 
 \subsection{End-users self perception}
 One of the core challenges of researching spreadsheets, and also end-user programming in general is that users do not seen themselves as programmers. Therefore, they often do not have training, but this is not the core issue. We could provide them with training, but preferably we support them with easier and less error-prone methods with more expressive power to do their jobs.
-The perception of end-user programmers as not being programmers is not limited to how programmers view themselves, but also to how they are seen by others. Professional developers and other coworkers of them often fail to recognize nad often belittle their programming efforts.
+The perception of end-user programmers as not being programmers is not limited to how programmers view themselves, but also to how they are seen by others. Professional developers and other coworkers of them often fail to recognize and often belittle their programming efforts.
 
 \subsection{Lack of best practices}
 A challenge that follows the previous one is the lack of standards. This inhibits easy processing of spreadsheets as it results in many differnt types of spreadsheets.
@@ -132,7 +134,6 @@ Increasing performance of spreadsheets (Allaeddin)
 Intertwining of formulas and other constructs makes automated analysis even harder
 
 
-\section{Related Work}
 
 \section{Conclusion}
 
