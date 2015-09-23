@@ -9,6 +9,7 @@
 
 \documentclass[conference]{IEEEtran}
 
+\usepackage{graphicx}
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
@@ -32,6 +33,9 @@ The abstract goes here.
 \section{Introduction}
 Spreadsheets are used for a large variety of different tasks, from invoicing to planning and from budgeting to scheduling, in all sorts of domains, from small shops to multinationals. In 2004, the International Data Corporation interview 118 business leaders and found that 85\% were using spreadsheets in financial reporting and forecasting~\cite{Panko2008} Especially in the financial domain, spreadsheets are ubiquitous. Financial intelligence firm CODA reported in 2008 that 95\% of all U.S. companies use spreadsheets for financial reporting~\cite{Panko2008}. The number of end-user programmers in the USA alone is conservatively estimated at 11 million, compared to only 2.75 million other, professional programmers~\cite{Scaf2005}. 
 
+
+
+
 As artifacts of end-user programming, spreadsheets often play a role similar to source code in many companies: they support important organizational processes and sometimes even business decisions are taken based on the information they contain~\cite{Hermans2011}.
 
 While spreadsheets are commonly used, their users often have little training as programmers, but in spite of that, they often face many of the challenges of professional developers, choosing which APIs, libraries, and functions to use~\cite{Ko2004}, or understanding someone else's code~\cite{Ko2011}. Since spreadsheets frequently contain errors~\cite{Panko1998}, end-users test, verify and debug their programs~\cite{Hermans2013-Cascon,Ko2004-Why}.
@@ -40,6 +44,17 @@ The above issues occurring in spreadsheets: program construction, maintenance, t
 
 
 \section{Background \& Motivation}
+\subsection{End-user programming}
+End-user programming has been a topic of study for decades, mainly started by by Nardi~\cite{Nardi1993} in her investigations into spreadsheet use in office workplaces. The difference between an end-user programmer and a professional programmer lies in their goals. It is the responsibility of a professional developer to build, debug, maintain and sometimes test software for others to use, while end-user developers create programs to support their own domain of expertise, like teaching, planning or bookkeeping. \todo{cite a21-ko.pdf} As such, programs that end-users create are, by definition, not meant for others to use, while professional programming has the goal of producing code for others to use. 
+
+The problematic aspects of end-user programming is that sometimes the created artifacts change from being a personal solution to a program used by many colleagues. When that happens, an end-user suddenly, often unintended and unprepared, has to take on challenges of professional developers, like testing, maintaining and generalizing their creations.
+
+\subsection{Spreadsheets}
+
+
+
+\subsubsection{Spreadsheets are Code}
+
 Simply put, spreadsheets are the world's most successful programming platform in the history of computing. Every day spreadsheets enable millions of business users to do reporting, planning, scheduling and all else needed to succeed in their jobs. 
 
 Of course, there are plenty of spreadsheets that simply used to keep lists or for throw away calculations, but just as many are used for business critical calculations.
@@ -49,10 +64,16 @@ Since spreadsheets are source code, they suffer from typical software programs: 
 
 
 \section{Achievements} 
-The core approach of the \emph{end-user software engineering} research applied to spreadsheets over the past decade has been to apply methods from software engineering to spreadsheets, addressing problems also commonly found in software in similar ways, but tailored towards the specific challenges of end-users and their artifacts.
+One of the approaches to \emph{end-user software engineering} research has been to transfer methods from software engineering to end-user languages, and this is an approach that has been applied eagerly in research into spreadsheets.  This section presents an overview of successful approaches following this scheme.
 
 \subsection{Testing}
+One of the programming concepts that found its way to spreadsheets earliest is testing. 
+
 \todo{summarize WYSIWYT}
+
+
+
+A third category of related work concerns the testing of spreadsheets. Centerpiece in this category is the work of Rothermel \emph{et al.}, who have created~\cite{Rothermel1997} and subsequently validated~\cite{Rothermel2000} a method to support end-users in defining and analyzing tests for spreadsheets. Their evaluation showed that their approach had an average fault detection percentage of 81\% which is ``comparable  to  those  achieved  by  analogous  techniques  for testing  imperative  programs." Other studies have confirmed the applicability of testing~\cite{Kruck2006}. The WYSIWYT methodology requires users to explicitly indicate what cells of a spreadsheet are correct and the system propagates the testedness of a cell to its dependents. Related is the elegant work of Burnett on spreadsheet assertions that uses a similar propagation system \cite{Burnett2003}.
 
 \subsection{Documentation extraction} 
 Like software, spreadsheets often suffer from a lack of documentation. In a field study, we found that only one in three spreadsheets have documentation~\cite{Hermans2011}. This seems to be a problem especially in situation where a spreadsheet was transferred: between colleagues, from a spreadsheet user to IT for migration or when a spreadsheet had to be reviewed by an auditor. To address the lack of documentation, we developed approaches to reverse engineers spreadsheets.
