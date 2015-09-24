@@ -148,15 +148,22 @@ This all has to do with understanding and improving quality we still want to sup
 
 \section{Challenges} 
 
-\subsection{End-users self perception}
-One of the core challenges of researching spreadsheets, and also end-user programming in general is that users do not seen themselves as programmers. Therefore, they often do not have training, but this is not the core issue. We could provide them with training, but preferably we support them with easier and less error-prone methods with more expressive power to do their jobs.
-The perception of end-user programmers as not being programmers is not limited to how programmers view themselves, but also to how they are seen by others. Professional developers and other coworkers of them often fail to recognize and often belittle their programming efforts.
+\subsection{End-user's perception and self perception}
+One of the core challenges of performing research on end-user programming in general, is that users do not seen themselves as programmers.  In one case where we were working with an investment banker, who was even insulted when we, impressed with a risk management dashboard he built with Excel, called him a programmer. Because end-user programmers do not self identify as developers, they often are not aware of tools, methods and techniques that could support them in their programming efforts.
+
+The perception of end-user programmers as not being `real' programmers is not limited to how programmers view themselves, but also to how they are seen by others. Professional developers and other types of coworkers end-user programmers might have, often fail to recognize and sometimes even belittle their programming efforts, while professional developers in the workplace could offer great support and could ease our technology transfer issues.
 
 \subsection{Lack of best practices}
-A challenge that follows the previous one is the lack of standards. This inhibits easy processing of spreadsheets as it results in many differnt types of spreadsheets.
+A challenge that follows the previous one is the lack of standards. As spreadsheets and their creators are not seen as source code and programmers, they are often outside of the scope of a diverse range of professionalization efforts within companies. Software, but also numerous processes are standardized; spreadsheets on the other hand are rarely. While a number of spreadsheet standards exist \todo{references here}, up till now they have not found widespread adoption, nor are there lint type compliance tools available.
+
+This inhibits easy processing of spreadsheets as it results in many different types of spreadsheets.
 
 \subsection{Lack of data}
-Spreadsheets often contain models and calculations of vital information to companies. As such, companies are often reluctant to share them with researchers. \todo{this is a broader issue in very applied/industrial research, tradeoff realism vs. reproducability} Even when we get large sets (like Enron), we do not have the users with them. There is no process data (version control history, like “MSR type papers”).
+Spreadsheets often contain models and calculations of vital information to companies. As such, companies are often reluctant to share them with researchers. This is an large challenge with industrial research in general, and spreadsheets in specific. Contrary to source code, which developers often happily share on online platforms like GitHub, spreadsheet users typically do not share their applications. 
+
+And while we have a number of public datasets available\todo{cite: Euses, Enron, Fuse}, we do not have data about the process around them, like issues or version control history, which software engineering researchers often do have access to. 
+
+We have worked together with companies providing us with data\todo{Robeco, F1F9} enabling study of spreadsheets \emph{in the wild}, however this came at the price of reduced repeatability, as we were not allowed to share these spreadsheets.
 
 \subsection{Size of spreadsheets }
 Spreadsheets can get big, navigating on 1 worksheet is still ok, but for larger sheets it is hard to filter what to present, just showing all dependencies is too much. [example from Enron, Sohon might have a pic]
