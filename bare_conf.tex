@@ -9,6 +9,7 @@
 
 \documentclass[conference]{IEEEtran}
 
+\usepackage{url}
 \usepackage{graphicx}
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -43,25 +44,69 @@ While spreadsheets are commonly used, their users often have little training as 
 The above issues occurring in spreadsheets: program construction, maintenance, testing, debugging clearly occur in regular code bases too, and as such have been topics of research in the programming and software engineering community for decades.\todo{references here}. Given these similarities between spreadsheets and source code, both in terms of application and issues, it is feasible to transform methods, tools and techniques from software engineering to spreadsheets, albeit sometimes in a form more tailored towards end-users. This has exactly been the approach of a number of researchers over the last decade, and this paper highlights their past achievements, challenges and future research directions. 
 
 
-\section{Background \& Motivation}
-\subsection{End-user programming}
+\section{End-user programming}
 End-user programming has been a topic of study for decades, mainly started by by Nardi~\cite{Nardi1993} in her investigations into spreadsheet use in office workplaces. The difference between an end-user programmer and a professional programmer lies in their goals. It is the responsibility of a professional developer to build, debug, maintain and sometimes test software for others to use, while end-user developers create programs to support their own domain of expertise, like teaching, planning or bookkeeping. \todo{cite a21-ko.pdf} As such, programs that end-users create are, by definition, not meant for others to use, while professional programming has the goal of producing code for others to use. 
 
 The problematic aspects of end-user programming is that sometimes the created artifacts change from being a personal solution to a program used by many colleagues. When that happens, an end-user suddenly, often unintended and unprepared, has to take on challenges of professional developers, like testing, maintaining and generalizing their creations.
 
-\subsection{Spreadsheets}
+\section{Spreadsheets are Code}
+While end-user programming can take on many forms, and their users can be as diverse as system administrators~\cite{Barrett2004}, interaction designers~\cite{Ko2004, brandt_opportunistic_2008, myers_how_2008}, spreadsheets can be considered the most successful form of end-user programming. In a survey \todo{link in Evernote} in 2003 over 60\% of 77 million surveyed workers in the US reported using spreadsheets, making this the third most common use of computers, after email and word processing. 
+
+ % Ko also names: natural scientists [Carver et al. 2007; Segal 2007], software architects [Lakshminarayanan et al. 2006], bioinformatics professionals [Letondal 2006], web designers [Rode and Rosson 2003]
 
 
+As outlined above, spreadsheets are crucial tools for many workers, enabling millions of users to do reporting, planning, scheduling and all else needed to succeed in their jobs. Obviously, not all spreadsheets are full-fledged applications: some are simply used for word processing with an easier layout and do not even contain formulas. However, spreadsheet are also commonly used to create applications, or to perform business critical calculations. We argue this second group of spreadsheets can and should be seen as source code, paving the way to apply methods from software engineering to them. In the folliwng, we will outline three reasons that spreadsheets systems are programming languages, and spreadsheet are code.
 
-\subsubsection{Spreadsheets are Code}
+\subsection{Application domains are similar}
+Firstly, spreadsheets are used for very similar problems, like financial calculations or data manipulation. In many cases, users have investigated the use of ‘off the shelf’ solution, however, they are often expensive and do not fit their needs exactly. A second alternative, having software made specifically for their problem tends to go over time and over budget as well. In that light, using a spreadsheets seems a cheap and simple solution for many end-users.
 
-Simply put, spreadsheets are the world's most successful programming platform in the history of computing. Every day spreadsheets enable millions of business users to do reporting, planning, scheduling and all else needed to succeed in their jobs. 
+\subsection{Expressive power is similar}
 
-Of course, there are plenty of spreadsheets that simply used to keep lists or for throw away calculations, but just as many are used for business critical calculations.
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=\columnwidth]{fig/turing.png}
+  \caption{A Turing machine implementation in Excel, using only formulas}
+  \label{fig:visical}
+  \end{center}
+\end{figure} 
 
-Since spreadsheets are source code, they suffer from typical software programs: they can have a long lifespan during which they are used and maintained by multiple users, they often do not have documentation and they are often riddled with errors. These problems are not unfamiliar to the software engineering community, in fact these are problems commonly addressed in our research. 
+Secondly, spreadsheets are Turing complete. And I am not even talking about the Visual Basic code behind them. Using formulas only, you can construct a Turing machine (Figure 1), as I demonstrated recently\todo{link Turing machine}. 
+
+\subsection{Maintainability issues are similar}
+
+Finally spreadsheets suffer from typical software problems, including, but not limited to the issues below.
+
+\textbf{Long life span} Sometimes, spreadsheets are created for one time use, and they are also thrown away after that use. More often they stay ‘alive’: enhanced with more data, reused for next year's budget or modified for a different department. Our research shows that spreadsheets have an average lifespan of 5 years~\cite{Hermans2011}.
+
+\textbf{Many different users} During their lifespan, spreadsheets are frequently shared among coworkers. On average, twelve different people work with one spreadsheet during its life, in many different ways~\cite{Hermans2011}. Shared for data entry, for checking or for analysis.
+
+\textbf{Lack of documentation} We found that only one in three spreadsheets  contain documentation, and we are not even talking about technical documentation, but just something as basic as a manual on how to use the spreadsheet is lacking in two thirds of the spreadsheets we examined.
+
+\textbf{Quality issues} Many accounts of big impact errors: From somewhat silly errors, like an overbooked Olympic stadium\todo{link OS} to career wrecking data analysis mistakes\todo{link Reinhard}, the stories of errors are numerous. The European Risk Interest Group keeps a list of these ‘spreadsheet horror stories’ on their website\footnote{\url{www.eusprig.org/horror-stories}}
+
+\section{Reflections on Spreadsheet Success factors}
+Given the extreme wide adoption of spreadsheets, one could wonder why spreadsheets are as successful as they are. We believe there are a number of different reasons for their success.
+
+\subsection{Live programming avant la lettre}
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=\columnwidth]{fig/bret.png}
+  \caption{Live programming: on the right the source code and on the left its instantiation of the code which changes immediately when the code is updated.}
+  \label{fig:bret}
+  \end{center}
+\end{figure} 
 
 
+Recently, ‘live programming’ has been made popular, among others by Bret Victor. Figure \ref{fig:bret} illustrates the idea of live programming. On the right, we have source code and on the right, we have the result of that code, in this case: a tree. Modifying the code will immediately affect the tree.
+ 
+But this is exactly what happens in a spreadsheet. The minute we hit enter in a formula, we get the result. No compilation is needed. This liveness enables the flexibility that is often praised as the success factor of spreadsheets.
+
+\subsection{Data, metadata and calculations in one view}
+In my research of spreadsheets, I have often asked the more tech savvy spreadsheet users why they did not use a more structured approach, like Microsoft Access. What I found was that the disconnect between the meta-data (designing the tables), the data (filling them) and the analysis (queries) was too much for many users. The fact that all of those can be bundled in one view makes it easier for non-programmers to keep an overview of what is going on. This is not so surprising, understanding dependencies of code is one of the challenges that developers still face, even advanced IDE's like Eclipse or Visual Studio do not solve this entirely. 
+
+\subsection{One-click deployment}
+Another problem that professional users face is the problem of deployment. Some more advanced users write, for example, Python scripts to analyze data. But how to get that to run on your neighbor's workstation, with a slightly different version of the operating system, a newer Office and different language settings? Spreadsheets are so universal that almost everyone has a spreadsheet program on their machine and the different programs can easily convert them. With that, a spreadsheet becomes an executable package with data and calculations packed together, that can run anywhere.
 
 \section{Achievements} 
 One of the approaches to \emph{end-user software engineering} research has been to transfer methods from software engineering to end-user languages, and this is an approach that has been applied eagerly in research into spreadsheets.  This section presents an overview of successful approaches following this scheme.
