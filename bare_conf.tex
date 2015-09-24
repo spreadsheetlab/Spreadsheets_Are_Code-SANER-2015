@@ -123,8 +123,8 @@ A third category of related work concerns the testing of spreadsheets. Centerpie
 \subsection{Documentation extraction} 
 Like software, spreadsheets often suffer from a lack of documentation. In a field study, we found that only one in three spreadsheets have documentation~\cite{Hermans2011}. This seems to be a problem especially in situation where a spreadsheet was transferred: between colleagues, from a spreadsheet user to IT for migration or when a spreadsheet had to be reviewed by an auditor. To address the lack of documentation, we developed approaches to reverse engineers spreadsheets.
 
-\subsubsection{Class diagrams}
-\todo{Sohon?}
+\subsubsection{Extracting Class Diagrams}
+In this approach we attempted to extract class diagrams from spreadsheets. Spreadsheets contain groups of data, computations over these groups, and data dependencies between them. This type of organization closely resembles that of object oriented systems, and thus groups of data were converted into classes, formulas into methods, and data dependencies into associations. To achieve this conversion a library was created for commonly used and well-defined spreadsheet patterns. The approach was automated through a tool named \textit{Gyro}. The approach was evaluated on the EUSES corpus. The patterns of the created library were found to be occurring in around 40\% of the corpus spreadsheets. For 50 randomly selected spreadsheets, class diagrams were generated manually and compared with the output of the Gyro tool. In this case also, 40\% of cases proved to be exact match and the rest having various degrees of mismatch with only 12\% being totally useless.
 
 \subsubsection{Dataflow visualization}
 \todo{Sohon?}
