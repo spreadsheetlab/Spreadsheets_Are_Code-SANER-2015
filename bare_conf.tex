@@ -184,7 +184,15 @@ While many spreadsheets are relatively small, spreadsheets can also grow extreme
 %For useful visualization we have to leave the cell level, want to look at the computation level (slicing)
 
 \subsection{Performance}
-Understandability and maintainability are not the only issues with large spreadsheets, large spreadsheets can have from serious performance problems too. We have seen in practice that especially spreadsheets using Monte Carlo simulations often suffer from performance problems. Some solutions have been proposed for this \todo{Alaaeddin, can I steal your related work here?}
+Understandability and maintainability are not the only issues with large spreadsheets, large spreadsheets can also suffer from serious performance problem. There have been several research efforts devoted to improving the performance of spreadsheet models in practice.
+
+Pichitlamken \emph{et a.l}~\cite{7_pichitlamken_kajkamhaeng_uthayopas_kaewpuang_2010} for example, proposed a method to offload a simulation model built in spreadsheets into a grid of computing resources, by splitting the problem in question into smaller problems that can be run in parallel independently. Their tool was developed for a very specific set of conditions, therefore it is very difficult to generalize for multiple problem types or to larger set of industrial data. 
+
+A related effort is the work by Abramson et al. in \cite{6_abramson_roe_kotler_mather_2001} presented ActiveSheets, a solution designed to evaluate “otherwise sequential” custom functions of Excel spreadsheets in the background, by creating a middle ware layer that gets the requests for evaluations. Once the evaluation request is received for a particular function it is immediately returns with a specific message to the spreadsheet, in order to allow the next function to start in parallel, if it is not dependent on this function's call. Meanwhile, the previous function's actual calculations are being processed in the background and possibly on multiple computational nodes, or a cluster. 
+
+Finally, there is ExcelGrid \cite{10_nadiminti_chiu_teoh_luther_venugopal_buyya_2004}, in which a middle ware tool was designed and built connecting an Excel spreadsheet with either a private or a public cluster. For each type of clusters, a separate interface is developed to handle the communication of tasks. In their main experimental model, the user interactively provides the middle ware with the needed data and configuration to operate: input and output cells, and an executable file, which represents a specific software that will perform the actual computing operation on the data set provided. The partitioning here is simple: each cell represents a job, either on a vertical direction (row-based) or on a horizontal direction (column-based). ExcelGrid uses Excel spreadsheet as a tool for providing data to another software which needs the extensive computing resources. 
+
+While the above tools and techniques address performance issues in spreadsheets, they do not take the content of the spreadsheet into account, by for example identifying hotspots in the spreadsheets calculation. 
 
 \subsection{Technical issues} 
 Finally, there are technical issues in processing spreadsheets and developing add-ins for a proprietary product like Microsoft Excel. 
@@ -200,6 +208,7 @@ Given the above achievements  and challenges, we identify the following viable d
 In contrast to the work on smells that have been tried in practice and spurred numerous follow up works and has been picked up by a larger research community, refactorings and testing need to be made more applicable.
 
 \subsection{More deeply understanding the role of spreadsheets in the enterprise}
+As explained above, it is hard to understand the 
 This understanding will have to happen both culturally (evolution, process) and in their application (use of spreadsheets) For example, classification different types of spreadsheets, potentially. For this we are exploring the following concrete endeavours:
 
 \subsubsection{For the purpose of reverse engineering (Sohon)}
